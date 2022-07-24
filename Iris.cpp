@@ -69,5 +69,7 @@ double Iris::petalWidth() {
 }
 
 void Iris::printIris() {
-	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth << ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth << ", type: " + m_type;
+	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth
+	<< ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth
+	<< ", type: " + m_type << endl;
 }
