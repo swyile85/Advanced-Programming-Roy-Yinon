@@ -1,5 +1,5 @@
 #include "FilesFunc.hpp"
 
 void main() {
-	readFile("classified.csv");
+	Iris* irises = readFile("classified.csv");
 }
