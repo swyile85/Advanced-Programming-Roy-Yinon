@@ -1,17 +1,24 @@
 #include "Iris.hpp"
 #include <iostream>
 
-Iris::Iris(string type, double cupLength, double cupWidth
-	, double petalLength, double petalWidth)
+Iris::Iris(double cupLength, double cupWidth
+	, double petalLength, double petalWidth, string type)
 {
+	Iris(cupLength, cupWidth, petalLength, petalWidth);
 	m_type = type;
+}
+
+Iris::Iris(double cupLength, double cupWidth,
+	double petalLength, double petalWidth)
+{
 	m_cupLength = cupLength;
 	m_cupWidth = cupWidth;
 	m_petalLength = petalLength;
 	m_petalWidth = petalWidth;
 }
 
-Iris::Iris() {
+Iris::Iris()
+{
 	m_type = "none";
 	m_cupLength = 0.0;
 	m_cupWidth = 0.0;
@@ -19,8 +26,8 @@ Iris::Iris() {
 	m_petalWidth = 0.0;
 }
 
-void Iris::set(string type, double cupLength, double cupWidth
-	, double petalLength, double petalWidth)
+void Iris::set(double cupLength, double cupWidth
+	, double petalLength, double petalWidth, string type)
 {
 	m_type = type;
 	m_cupLength = cupLength;
@@ -69,7 +76,5 @@ double Iris::petalWidth() {
 }
 
 void Iris::printIris() {
-	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth
-	<< ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth
-	<< ", type: " + m_type << endl;
+	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth << ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth << ", type: " + m_type << endl;
 }

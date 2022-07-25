@@ -1,3 +1,5 @@
+#ifndef FilesFunc
+
 #include <iostream>
 #include <fstream>
 #include <list>
@@ -5,3 +7,5 @@
 
 int lengthOfFile(string fileName);
 Iris* readFile(string fileName);
+
+#endif // FilesFunc
