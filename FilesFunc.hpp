@@ -1,6 +1,5 @@
 #ifndef FilesFunc
 
-#include <iostream>
 #include <fstream>
 #include <list>
 #include "Iris.hpp"

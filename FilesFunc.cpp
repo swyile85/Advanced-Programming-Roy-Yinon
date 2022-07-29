@@ -30,9 +30,9 @@ Iris* readFile(string fileName)
             irises[counter++].setWithString(str, comma);
         }
     }
-    for (int i = 0; i < amountOfIrises; i++) {
+    /*for (int i = 0; i < amountOfIrises; i++) {
         irises[i].printIris();
     }
-    cout << amountOfIrises;
+    cout << amountOfIrises;*/
     return irises;
 }

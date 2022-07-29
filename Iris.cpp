@@ -1,5 +1,4 @@
 #include "Iris.hpp"
-#include <iostream>
 
 Iris::Iris(double cupLength, double cupWidth
 	, double petalLength, double petalWidth, string type)
@@ -78,3 +77,83 @@ double Iris::petalWidth() {
 void Iris::printIris() {
 	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth << ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth << ", type: " + m_type << endl;
 }
+string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFunc)(Iris)) {
+	double* distances = new double[length];
+	int* amountOfType = new int[3];
+	for (int m = 0; m < 3; m++) {
+		amountOfType[m] = 0;
+	}
+	int* indexOutOfUse = new int[k];
+	int maxIndex = 0;
+	bool flag = true;
+	for (int i = 0; i < length; i++) {
+		distances[i] = (this->*distanceFunc)(irises[i]);
+		if (distances[i] > distances[maxIndex]) {
+			maxIndex = i;
+		}
+	}
+	for (int m = 0; m < k; m++) {
+		int minIndex = maxIndex;
+		for (int j = 0; j < length; j++) {
+			for (int l = 0; l < m; l++) {
+				if (indexOutOfUse[l] == j) {
+					flag = false;
+					break;
+				}
+			}
+			if ((distances[j] < distances[minIndex]) && flag) {
+				minIndex = j;
+			}
+			flag = true;
+		}
+		cout << irises[minIndex].type() << "    " << minIndex << "        check" << endl;
+		if (irises[minIndex].type().compare("Iris-setosa") == 0) {
+			cout << "setosa" << endl;
+			amountOfType[0]++;
+		}
+		if (irises[minIndex].type().compare("Iris-virginica") == 0) {
+			cout << "virginica" << endl;
+			amountOfType[1]++;
+		}
+		if (irises[minIndex].type().compare("Iris-versicolor") == 0) {
+			cout << "versicolor" << endl;
+			amountOfType[2]++;
+		}
+		indexOutOfUse[m] = minIndex;
+	}
+	if ((amountOfType[0] > amountOfType[1]) && (amountOfType[0] > amountOfType[2])) {
+		return "Iris-setosa";
+	} else if ((amountOfType[1] > amountOfType[0]) && (amountOfType[1] > amountOfType[2])) {
+		return "Iris-virginica";
+	} else if ((amountOfType[2] > amountOfType[1]) && (amountOfType[2] > amountOfType[0])) {
+		return "Iris-versicolor";
+	}
+	return "unIdentified";
+}
+void Iris::setType(string type) {
+	m_type = type;
+}
+double Iris::euclideanDistance(Iris checking) {
+    double dx = pow((this->cupLength() - checking.cupLength()), 2);
+    double dy = pow((this->cupWidth() - checking.cupWidth()), 2);
+    double dz = pow((this->petalWidth() - checking.petalWidth()), 2);
+    double dw = pow((this->petalLength() - checking.petalLength()), 2);
+    return sqrt(dx + dy  + dz + dw);
+}
+double Iris::manhattanDistance(Iris checking) {
+    double dx = abs(this->cupLength() - checking.cupLength());
+    double dy = abs(this->cupWidth() - checking.cupWidth());
+    double dz = abs(this->petalWidth() - checking.petalWidth());
+    double dw = abs(this->petalLength() - checking.petalLength());
+    return dx + dy  + dz + dw; 
+}
+double Iris::chebyshevDistance(Iris checking) {
+    double dx = abs(this->cupLength() - checking.cupLength());
+    double dy = abs(this->cupWidth() - checking.cupWidth());
+    double dz = abs(this->petalWidth() - checking.petalWidth());
+    double dw = abs(this->petalLength() - checking.petalLength());
+    double maxXY = max(dx, dy);   
+    double maxZW = max(dz, dw);
+    return max(maxXY, maxZW);
+}
+Iris::~Iris() {}
