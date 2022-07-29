@@ -106,17 +106,13 @@ string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFu
 			}
 			flag = true;
 		}
-		cout << irises[minIndex].type() << "    " << minIndex << "        check" << endl;
 		if (irises[minIndex].type().compare("Iris-setosa") == 0) {
-			cout << "setosa" << endl;
 			amountOfType[0]++;
 		}
 		if (irises[minIndex].type().compare("Iris-virginica") == 0) {
-			cout << "virginica" << endl;
 			amountOfType[1]++;
 		}
 		if (irises[minIndex].type().compare("Iris-versicolor") == 0) {
-			cout << "versicolor" << endl;
 			amountOfType[2]++;
 		}
 		indexOutOfUse[m] = minIndex;

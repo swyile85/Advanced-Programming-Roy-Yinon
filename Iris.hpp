@@ -4,7 +4,9 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
-
+/*
+* This class is responsible for the Iris flower.
+*/
 class Iris {
 	string m_type;
 	double m_cupLength;
