@@ -50,6 +50,8 @@ void Iris::setWithString(string data, char comma)
 	i = data.find(comma, j);
 	m_petalWidth = stod(data.substr(j, i - j));
 	j = i + 1;
+	if (j == 0)
+		return;
 	i = data.find('\0', j);
 	m_type = data.substr(j, i - j);
 }
@@ -77,6 +79,7 @@ double Iris::petalWidth() {
 void Iris::printIris() {
 	cout << "cup length: " << m_cupLength << ", cup width: " << m_cupWidth << ", petal length: " << m_petalLength << ", petal width: " << m_petalWidth << ", type: " + m_type << endl;
 }
+
 string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFunc)(Iris)) {
 	double* distances = new double[length];
 	int* amountOfType = new int[3];
@@ -126,9 +129,11 @@ string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFu
 	}
 	return "unIdentified";
 }
+
 void Iris::setType(string type) {
 	m_type = type;
 }
+
 double Iris::euclideanDistance(Iris checking) {
     double dx = pow((this->cupLength() - checking.cupLength()), 2);
     double dy = pow((this->cupWidth() - checking.cupWidth()), 2);
@@ -136,6 +141,7 @@ double Iris::euclideanDistance(Iris checking) {
     double dw = pow((this->petalLength() - checking.petalLength()), 2);
     return sqrt(dx + dy  + dz + dw);
 }
+
 double Iris::manhattanDistance(Iris checking) {
     double dx = abs(this->cupLength() - checking.cupLength());
     double dy = abs(this->cupWidth() - checking.cupWidth());
@@ -143,6 +149,7 @@ double Iris::manhattanDistance(Iris checking) {
     double dw = abs(this->petalLength() - checking.petalLength());
     return dx + dy  + dz + dw; 
 }
+
 double Iris::chebyshevDistance(Iris checking) {
     double dx = abs(this->cupLength() - checking.cupLength());
     double dy = abs(this->cupWidth() - checking.cupWidth());
@@ -152,4 +159,5 @@ double Iris::chebyshevDistance(Iris checking) {
     double maxZW = max(dz, dw);
     return max(maxXY, maxZW);
 }
+
 Iris::~Iris() {}
