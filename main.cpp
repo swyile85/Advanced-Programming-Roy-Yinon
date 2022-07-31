@@ -1,4 +1,5 @@
 #include "FilesFunc.hpp"
+#include "Iris.hpp"
 
 int main(int argc, char** argv) {
 	const string classifiedFileName = "classified.csv",
@@ -17,5 +18,7 @@ int main(int argc, char** argv) {
 		numOfClassified, unClassifiedIrises, numOfUnClassified, k);
 	toFile(outputs[2], &Iris::manhattanDistance, classifiedIrises,
 		numOfClassified, unClassifiedIrises, numOfUnClassified, k);
+		free(classifiedIrises);
+		free(unClassifiedIrises);
 	return 0;	
 }
