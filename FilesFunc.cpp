@@ -32,3 +32,16 @@ Iris* readFile(string fileName)
     }
     return irises;
 }
+
+void toFile(string fileName, double(Iris::* distanceFunc)(Iris),
+    Iris* classifiedIrises, int numOfClassified, Iris* unClassifiedIrises,
+    int numOfUnClassified, int k)
+{
+    ofstream output;
+    output.open(fileName);
+    for (int i = 0; i < numOfUnClassified; i++) {
+        output << (unClassifiedIrises[i].classify(classifiedIrises, k,
+            numOfClassified, distanceFunc)) << endl;
+    }
+    output.close();
+}
