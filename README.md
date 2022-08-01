@@ -11,8 +11,10 @@ After writing the right paths, you should compile all the files together, and th
 
 # The compilation:
 In order to compile the project you should use the command:
+
 g++ *.cpp -std=c++11 -o main.exe
 
 And after compiling you should run the project with the command:
 ./main.exe k
+
 when k is the k from the knn algorithm.
