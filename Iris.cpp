@@ -174,5 +174,3 @@ double Iris::chebyshevDistance(Iris checking) {
     double maxZW = max(dz, dw);
     return max(maxXY, maxZW);
 }
-
-Iris::~Iris() {}

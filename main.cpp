@@ -14,10 +14,8 @@ int main(int argc, char** argv) {
 	//the path that you want for the chbyshev-output.
 		"manhattan_output.csv" };
 	//the path that you want for the manhattan-output.
-	Iris* classifiedIrises = new Iris[numOfClassified];
-	classifiedIrises = readFile(classifiedFileName);
-	Iris* unClassifiedIrises = new Iris[numOfUnClassified];
-	unClassifiedIrises = readFile(unClassifiedFilename);
+	Iris* classifiedIrises = readFile(classifiedFileName);
+	Iris* unClassifiedIrises = readFile(unClassifiedFilename);
 	toFile(outputs[0], &Iris::euclideanDistance, classifiedIrises,
 		numOfClassified, unClassifiedIrises, numOfUnClassified, k);
 	toFile(outputs[1], &Iris::chebyshevDistance, classifiedIrises,

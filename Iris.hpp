@@ -46,12 +46,6 @@ public:
 		double petalLength, double petalWidth);
 	
 	/**
-	 * @brief Destroy the Iris object
-	 * 
-	 */
-	~Iris();
-
-	/**
 	 * @brief set the params of the iris object.
 	 * 
 	 * @param cupLength (as it is).

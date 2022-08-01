@@ -30,6 +30,7 @@ Iris* readFile(string fileName)
             irises[counter++].setWithString(str, comma);
         }
     }
+    inputFile.close();
     return irises;
 }
 
