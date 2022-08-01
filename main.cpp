@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 		numOfClassified, unClassifiedIrises, numOfUnClassified, k);
 	toFile(outputs[2], &Iris::manhattanDistance, classifiedIrises,
 		numOfClassified, unClassifiedIrises, numOfUnClassified, k);
-		free(classifiedIrises);
-		free(unClassifiedIrises);
+	delete[] classifiedIrises;
+	delete[] unClassifiedIrises;
 	return 0;	
 }

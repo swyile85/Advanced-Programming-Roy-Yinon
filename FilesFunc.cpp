@@ -28,7 +28,6 @@ Iris* readFile(string fileName)
         getline(inputFile, str);
         if (!str.empty()) {
             irises[counter++].setWithString(str, comma);
-            irises[counter-1].printIris();
         }
     }
     return irises;

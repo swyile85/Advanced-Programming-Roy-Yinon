@@ -95,6 +95,11 @@ string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFu
 			maxIndex = i;
 		}
 	}
+	/*
+	* This loop is in charge of counting the number of each type of the closest k Irises.
+	* It has an array that is responsible for the indexes already chosen and it checks for 
+	  all of the distances who is the shortest out of the indexes that was not chosen.
+	*/
 	for (int m = 0; m < k; m++) {
 		int minIndex = maxIndex;
 		for (int j = 0; j < length; j++) {
@@ -120,13 +125,23 @@ string Iris::classify(Iris* irises, int k, int length, double (Iris::*distanceFu
 		}
 		indexOutOfUse[m] = minIndex;
 	}
+	delete[] distances;
+	delete[] indexOutOfUse;
+	/*
+	* The conditions are for the function to decide which type is suitable
+	  to the Iris that we are checking.
+	*/
 	if ((amountOfType[0] > amountOfType[1]) && (amountOfType[0] > amountOfType[2])) {
+		delete[] amountOfType;
 		return "Iris-setosa";
 	} else if ((amountOfType[1] > amountOfType[0]) && (amountOfType[1] > amountOfType[2])) {
+		delete[] amountOfType;
 		return "Iris-virginica";
 	} else if ((amountOfType[2] > amountOfType[1]) && (amountOfType[2] > amountOfType[0])) {
+		delete[] amountOfType;
 		return "Iris-versicolor";
 	}
+	delete[] amountOfType;
 	return "unIdentified";
 }
 
