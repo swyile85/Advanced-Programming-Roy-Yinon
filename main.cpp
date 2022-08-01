@@ -3,11 +3,17 @@
 
 int main(int argc, char** argv) {
 	const string classifiedFileName = "classified.csv",
+	//here the path of the classified file
 		unClassifiedFilename = "Unclassified.csv";
+	//here the class of the un-classified file
 	int k = stoi(argv[1]), numOfClassified = lengthOfFile(classifiedFileName),
 		numOfUnClassified = lengthOfFile(unClassifiedFilename);
-	string outputs[] = { "euclidean_output.csv",
-		"chebyshev_output.csv", "manhattan_output.csv" };
+	string outputs[] = { "euclidean_output.csv", 
+	//the path that you want for the euclidean-output.
+		"chebyshev_output.csv",
+	//the path that you want for the chbyshev-output.
+		"manhattan_output.csv" };
+	//the path that you want for the manhattan-output.
 	Iris* classifiedIrises = new Iris[numOfClassified];
 	classifiedIrises = readFile(classifiedFileName);
 	Iris* unClassifiedIrises = new Iris[numOfUnClassified];
