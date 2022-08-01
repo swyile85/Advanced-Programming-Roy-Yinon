@@ -15,6 +15,7 @@ In order to compile the project you should use the command:
 g++ *.cpp -std=c++11 -o main.exe
 
 And after compiling you should run the project with the command:
+
 ./main.exe k
 
 when k is the k from the knn algorithm.
